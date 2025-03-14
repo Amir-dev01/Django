@@ -2,23 +2,23 @@ from django.shortcuts import render
 from . import models
 
 
-def all_category_film(request):
+def all_category_books(request):
     if request.method == 'GET':
-        query = models.Post.objects.all()
+        query = models.Product.objects.all()
         return render(request,
                       template_name='tags/all_category_books.html',
                       context={'query': query}
                       )
-def teen_category_film(request):
+def teen_category_books(request):
     if request.method == 'GET':
-        query = models.Post.objects.all().filter(tags__name='Книги для подростков')
+        query = models.Product.objects.all().filter(tags__name='Книги для подростков')
         return render(request,
-                      template_name='tags/teen_category_film.html',
+                      template_name='tags/teen_category_books.html',
                       context={'query': query}
                       )
-def kids_category_film(request):
+def kids_category_books(request):
     if request.method == 'GET':
-        query = models.Post.objects.all().filter(tags__name='Книги для детей')
+        query = models.Product.objects.all().filter(tags__name='Книги для детей')
         return render(request,
-                      template_name='tags/kids_category_film.html',
+                      template_name='tags/kids_category_books.html',
                       context={'query': query})
