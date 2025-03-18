@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('books.urls')),
     path('', include('hashtags.urls')),
+    path('', include('Basket.urls')),
 
 
 
