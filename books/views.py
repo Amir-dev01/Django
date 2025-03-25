@@ -2,9 +2,12 @@ from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from datetime import datetime
 from . import models
-from django.views import generic
 
-class SearchBooksView(generic.ListView):
+from django.views.generic import DetailView, ListView
+from .models import Books
+
+
+class SearchBooksView(ListView):
     template_name = 'book.html'
     context_object_name = 'query'
 
@@ -18,29 +21,19 @@ class SearchBooksView(generic.ListView):
 
 
 #get id
-def books_detail(request, id):
-    if request.method == 'GET':
-        books_id = get_object_or_404(models.Books, id=id)
-        return render(
-            request,
-            template_name='book_detail.html',
-            context={
-                'books_id': books_id,
-            }
-        )
+class BooksDetailView(DetailView):
+    model = Books
+    template_name = 'book_detail.html'
+    context_object_name = 'books_id'
+
+    def get_object(self):
+        return get_object_or_404(Books, id=self.kwargs['id'])
 
 
-#list
-def books_list(request):
-    if request.method == 'GET':
-        query = models.Books.objects.all()
-        return render(
-            request,
-            template_name='book.html',
-            context={
-                'query': query,
-            }
-        )
+class BooksListView(ListView):
+    model = Books
+    template_name = 'book.html'
+    context_object_name = 'query'
 
 
 
