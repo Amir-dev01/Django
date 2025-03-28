@@ -9,6 +9,7 @@ urlpatterns = [
     path('', include('hashtags.urls')),
     path('', include('Basket.urls')),
     path('', include('parser_app.urls')),
+    path('', include('users.urls')),
 
 
 
