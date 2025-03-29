@@ -2,10 +2,13 @@ from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from datetime import datetime
 from . import models
-
-
 from django.views.generic import DetailView, ListView,View
 from .models import Books
+
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
+from django.core.cache import cache
+
 
 
 class SearchBooksView(ListView):
@@ -31,10 +34,19 @@ class BooksDetailView(DetailView):
         return get_object_or_404(Books, id=self.kwargs['id'])
 
 
+@method_decorator(cache_page(60*15), name='dispatch')
 class BooksListView(ListView):
     model = Books
     template_name = 'book.html'
     context_object_name = 'query'
+
+    def get_queryset(self):
+        books = cache.get('query')
+        if not books:
+            books = self.model.objects.all()
+            cache.set('query', books)
+        return books
+
 
 class AboutMeView(View):
     def get(self, request):
