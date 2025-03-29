@@ -10,6 +10,7 @@ urlpatterns = [
     path('', include('Basket.urls')),
     path('', include('parser_app.urls')),
     path('', include('users.urls')),
+    path('', include('recipe.urls')),
 
 
 

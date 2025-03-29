@@ -1,0 +1,17 @@
+from django.db import models
+
+class Recipe(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+
+class Ingredient(models.Model):
+    name = models.CharField(max_length=255)
+    quantity = models.CharField(max_length=255)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='ingredients')  # Связь с рецептом
+
+    def __str__(self):
+        return f"{self.name} ({self.quantity})"

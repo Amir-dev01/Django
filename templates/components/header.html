@@ -26,6 +26,8 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'create_task' %}">Добавить</a></li>
                         <li><a class="dropdown-item" href="{% url 'task_list' %}">Корзина</a></li>
+                        <li><a class="dropdown-item" href="{% url 'recipe_create' %}">Добавить рецепт</a></li>
+                        <li><a class="dropdown-item" href="{% url 'recipe_list' %}">Рецепты</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -40,6 +42,8 @@
                  <li class="nav-item">
                      <a class="nav-link enable" href="{% url 'rezka_list' %}" style="color: yellow;">Фильмы с Rezka.ag</a>
                 </li>
+
+
             </ul>
             <form action="{% url 'search' %}" method="GET" class="d-flex" role="search">
                 <input class="form-control me-2" type="search" name="q" placeholder="Поиск" aria-label="Поиск">

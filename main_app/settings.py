@@ -4,8 +4,8 @@ import os
 from . import admin_panel
 from dotenv import load_dotenv
 
-JAZZMIN_SETTINGS = admin_panel.JAZZMIN_SETTINGS
-JAZZMIN_UI_TWEAKS = admin_panel.JAZZMIN_UI_TWEAKS
+# JAZZMIN_SETTINGS = admin_panel.JAZZMIN_SETTINGS
+# JAZZMIN_UI_TWEAKS = admin_panel.JAZZMIN_UI_TWEAKS
 
 
 
@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ["localhost","127.0.0.1",]
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
+    # 'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'Basket',
     'parser_app',
     'users',
+    'recipe',
 ]
 
 MIDDLEWARE = [
